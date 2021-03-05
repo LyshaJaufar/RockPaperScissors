@@ -94,12 +94,35 @@ def play(times):
 
 
 def outputAnalysis():
-	global rockPercent, paperPercent, scissorsPercent, difference, longRockValue, longScissorsValue, longPaperValue, elapsedtime
+	global rockPercent, paperPercent, scissorsPercent, longRockValue, longScissorsValue, longPaperValue, elapsedtime
+	global differenceRockPaper, differenceRockScissors, differencePaperScissors
+
+ 
 	rockPercent = (100/timesToRepeat)*rock
 	paperPercent = (100/timesToRepeat)*paper
 	scissorsPercent = (100/timesToRepeat)*scissors
 
+	if rock > paper:
+		differenceRockPaper = rock - paper
+	elif paper > rock:
+		differenceRockPaper = paper - rock
+	elif paper == rock:
+		differenceRockPaper = 0
 
+	if rock > scissors:
+		differenceRockScissors = rock - scissors
+	elif scissors > rock:
+		differenceRockScissors = scissors - rock
+	elif scissors == rock:
+		differenceRockScissors = 0
+
+	if paper > scissors:
+		differncePaperScissors = paper - scissors
+	elif scissors > paper:
+		differencePaperScissors = scissors - paper
+	elif scissors == paper:
+		differencePaperScissors = 0
+	
 
 	elapsedtime = str(datetime.timedelta(seconds=round(time.time()-starttime, 2)))
 	elapsedtime = elapsedtime[:-4]
@@ -110,7 +133,9 @@ def outputAnalysis():
 	print("Opponent played rock", rock, "times, or", rockPercent, "% of the time.")
 	print("Opponent played scissors", scissors, "times, or", scissorsPercent, "% of the time.")
 	print("Opponent played paper", paper, "times, or", paperPercent, "% of the time.")
-	#print("The difference between the two was", difference, ".")
+	print("The difference between the number of times opponent chose rock and paper was", differenceRockPaper)
+	print("The difference between the number of times opponent chose paper and scissors was", differencePaperScissors)
+	print("The difference between the number of times opponent chose scissors and rock was", differenceRockScissors)
 	print("The longest string of rocks played by opponents in a row was:", longRockValue)
 	print("The longest string of paper played by opponents in a row was:", longPaperValue)
 	print("The longest string of scissors played by opponents in a row was:", longScissorsValue)
@@ -124,11 +149,12 @@ def outputLogFile():
 		logfile.write("Opponent played rock " + str(rock) + " times, or " + str(rockPercent) + "% of the time.\n")
 		logfile.write("Opponent played paper " + str(paper) + " times, or " + str(paperPercent) + "% of the time.\n")
 		logfile.write("Opponent played scissors " + str(scissors) + " times, or " + str(scissorsPercent) + "% of the time.\n")
-		#logfile.write("The difference between the two was " + str(difference) + ".\n")
+		logfile.write("The difference between the number of times opponent chose rock and paper was " + str(differenceRockPaper) + ".\n")
+		logfile.write("The difference between the number of times opponent chose paper and scissors was " + str(differencePaperScissors) + ".\n")
+		logfile.write("The difference between the number of times opponent chose scissors and rock was " + str(differenceRockScissors) + ".\n")
 		logfile.write("The most consecutive times opponent played rock was " + str(longRockValue) + ".\n")
 		logfile.write("The most consecutive times opponent played paper was " + str(longPaperValue) + ".\n")
 		logfile.write("The most consecutive times opponent played scissors was " + str(longScissorsValue) + ".\n")
-		#logfile.write("The amount of time taken to flip each coin on average was " + str(estimate) + ".\n")
 		logfile.close()
 		print("A logfile was published to ", os.getcwd()+'/'+logFileName)
 	else:
