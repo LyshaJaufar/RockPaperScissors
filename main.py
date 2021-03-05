@@ -117,7 +117,7 @@ def outputAnalysis():
 		differenceRockScissors = 0
 
 	if paper > scissors:
-		differncePaperScissors = paper - scissors
+		differencePaperScissors = paper - scissors
 	elif scissors > paper:
 		differencePaperScissors = scissors - paper
 	elif scissors == paper:
@@ -160,24 +160,27 @@ def outputLogFile():
 	else:
 		print("No log created.")
 
-if args.n == None:
-    timesToRepeat = askHowManyTimesToRepeat()
-else:
-    timesToRepeat = int(args.n[0])
 
-if args.l == None:
-    logFileName = askToLogOrNot()
-elif args.l[0].lower() != "no" or args.l[0].lower() != "n":
-    logFileName = args.l[0]
-else:
-    logFileName = "n"
+if __name__ == '__main__':
+	if args.n == None:
+		timesToRepeat = askHowManyTimesToRepeat()
+	else:
+		timesToRepeat = int(args.n[0])
 
-if args.o == None:
-    visualOutputYesOrNo = askToShowVisualOutput()
-else:
-    visualOutputYesOrNo = args.o[0].lower()
+	if args.l == None:
+		logFileName = askToLogOrNot()
+	elif args.l[0].lower() != "no" or args.l[0].lower() != "n":
+		logFileName = args.l[0]
+	else:
+		logFileName = "n"
 
-starttime = time.time()
-play(timesToRepeat)
-outputAnalysis()
-outputLogFile()
+	if args.o == None:
+		visualOutputYesOrNo = askToShowVisualOutput()
+	else:
+		visualOutputYesOrNo = args.o[0].lower()
+
+	starttime = time.time()
+	play(timesToRepeat)
+	outputAnalysis()
+	outputLogFile()
+	
