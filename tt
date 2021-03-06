@@ -1,0 +1,11 @@
+Played 9999999 rounds of rock paper scissors.
+Total execution time: 0:00:08.31
+Opponent played rock 3332910 times, or 33.329103332910336% of the time.
+Opponent played paper 3335479 times, or 33.354793335479336% of the time.
+Opponent played scissors 3331610 times, or 33.316103331610336% of the time.
+The difference between the number of times opponent chose rock and paper was 2569.
+The difference between the number of times opponent chose paper and scissors was 3869.
+The difference between the number of times opponent chose scissors and rock was 1300.
+The most consecutive times opponent played rock was 0.
+The most consecutive times opponent played paper was 15.
+The most consecutive times opponent played scissors was 17.
